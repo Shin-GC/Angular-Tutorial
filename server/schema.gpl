@@ -1,0 +1,16 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  name: String
+  email: String
+  password: String
+  gender: String
+  phone: String
+}
+
+type Query {
+  isPizzaGood: Boolean!
+  getUsers: [User!]!
+}
