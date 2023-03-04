@@ -1,21 +1,22 @@
 import { Injectable } from '@nestjs/common';
 import { CreateHeroDto } from './dto/create-hero.dto';
 import { UpdateHeroDto } from './dto/update-hero.dto';
-import { InjectModel } from '@nestjs/sequelize';
 import { Hero } from './entities/hero.entity';
+import { HerosRepository } from './repositorys/heros.repository';
 
 @Injectable()
 export class HerosService {
-  constructor(
-    @InjectModel(Hero)
-    private heroModel: typeof Hero,
-  ) {}
+  constructor(private readonly herosRepository: HerosRepository) {}
   create(createHeroDto: CreateHeroDto) {
     return 'This action adds a new hero';
   }
 
   async findAll(): Promise<Hero[]> {
-    return this.heroModel.findAll();
+    try {
+      return this.herosRepository.findAll();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   findOne(id: number) {

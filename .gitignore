@@ -65,8 +65,7 @@ node_modules/
 # dotenv environment variables file
 .env
 .angular/
-.firebase/
 .github/
-node_modules/
 dist/
 .firebaserc
+.idea/

@@ -1,4 +1,12 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { HerosService } from './heros.service';
 import { CreateHeroDto } from './dto/create-hero.dto';
 import { UpdateHeroDto } from './dto/update-hero.dto';
@@ -13,8 +21,12 @@ export class HerosController {
   }
 
   @Get()
-  findAll() {
-    return this.herosService.findAll();
+  async findAll() {
+    try {
+      return await this.herosService.findAll();
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   @Get(':id')
